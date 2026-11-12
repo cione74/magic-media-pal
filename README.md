@@ -6,7 +6,7 @@
 
 P.A.L. stands for Personal Archive Librarian. This release is Magic Media PAL Home v0.2.0-alpha.1.
 
-An experimental source-only alpha for trusted local use on Debian 13 amd64. Magic Media PAL has no built-in authentication. Keep the web interface on loopback and use a trusted SSH tunnel if needed.
+An experimental source-only alpha for trusted local use on Debian 13 amd64. Magic Media PAL has no built-in authentication. The standard setup publishes the web interface on a specific trusted LAN address.
 
 - [Install and build from source](INSTALL.md)
 - [Security and known issues](SECURITY.md)

@@ -67,8 +67,11 @@ Use a dedicated empty workspace and the runtime path above. Identify the optical
 ```sh
 workspace="$HOME/dexter-local"
 mkdir -p "$workspace/config" "$workspace/staging" "$workspace/library/music"
+printf "Trusted LAN IPv4 address for this Debian host: "
+IFS= read -r lan_ip
+case "$lan_ip" in ""|0.0.0.0|*[!0-9.]*) echo "Enter a specific IPv4 address."; exit 1;; esac
 sudo docker run -d --name dexter-local \
-  --network host -e RIPPER_BIND=127.0.0.1 -e RIPPER_PORT=5801 \
+  -p "$lan_ip:5801:8080" \
   -e RIPPER_DRIVE=/dev/sr0 -e LD_LIBRARY_PATH=/opt/makemkv/lib \
   --device /dev/sr0 --device /dev/sg2 \
   --mount "type=bind,source=$runtime,target=/opt/makemkv,readonly" \
@@ -78,4 +81,4 @@ sudo docker run -d --name dexter-local \
   dexter-ripper:external-makemkv-security
 ```
 
-Open http://127.0.0.1:5801/settings from that host, or use a trusted SSH tunnel. Magic Media PAL has no login. Keep the explicit loopback bind and restrict access to trusted users and media. The first UHD scan may need vendor support data. The physical acceptance test used an existing support cache and an isolated offline network. New installs have no such cache. Network-enabled MakeMKV can contact the vendor for support data, updates and diagnostics. Keep the runtime directory and back up config, staging and library before replacing the container. Never share the runtime bundle, keys or support cache as part of the Magic Media PAL source release.
+Open port 5801 at the address you entered from a browser on the trusted LAN. Enter 127.0.0.1 for host-only access. Magic Media PAL has no login. Keep the port off the public internet. The first UHD scan may need vendor support data. The physical acceptance test used an existing support cache and an isolated offline network. New installs have no such cache. Network-enabled MakeMKV can contact the vendor for support data, updates and diagnostics. Keep the runtime directory and back up config, staging and library before replacing the container. Never share the runtime bundle, keys or support cache as part of the Magic Media PAL source release.
