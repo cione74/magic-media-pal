@@ -1,0 +1,68 @@
+# Experimental only: install.sh continues to use Dockerfile.
+FROM debian@sha256:a72b4433de1cf7d6bae0c4cee74d0547f58601a643b3375f070c51600d63b6b2 AS ffmpeg-build
+RUN sed 's/Types: deb$/Types: deb-src/' /etc/apt/sources.list.d/debian.sources > /etc/apt/sources.list.d/dexter-source.sources \
+    && apt-get update && apt-get build-dep -y ffmpeg && apt-get install -y --no-install-recommends patch
+WORKDIR /build
+RUN apt-get source ffmpeg
+COPY tools/runtime-candidate/ffmpeg-hevc-nal-count.patch /build/hevc.patch
+RUN set -eu; cd ffmpeg-*/; patch --fuzz=0 -p1 < /build/hevc.patch; \
+    sed -i '1s/) /+dexter1) /' debian/changelog; \
+    DEB_BUILD_OPTIONS='nocheck parallel=2' dpkg-buildpackage -b -uc -us; \
+    mkdir /packages; \
+    for package in /build/*.deb; do \
+      case "$package" in *-dev_*|*-doc_*|*-dbgsym_*) continue ;; esac; \
+      cp "$package" /packages/; \
+    done
+FROM ffmpeg-build AS ffmpeg-regression
+COPY tools/runtime-candidate/test-hevc-count.c /build/test-hevc-count.c
+RUN set -eu; cd /build/ffmpeg-*/; \
+    cc -DHAVE_AV_CONFIG_H -ffunction-sections -fdata-sections -Wl,--gc-sections -I debian/standard -I . \
+       /build/test-hevc-count.c -L debian/standard/libavutil -lavutil -lm -pthread -o /build/test-hevc-count; \
+    LD_LIBRARY_PATH=debian/standard/libavutil /build/test-hevc-count; \
+    echo "PASS: HEVC NAL count boundary regression"
+
+FROM scratch AS source-materials
+COPY --from=ffmpeg-build /build/ /ffmpeg-build/
+
+FROM debian@sha256:a72b4433de1cf7d6bae0c4cee74d0547f58601a643b3375f070c51600d63b6b2 AS reader-build
+RUN apt-get update && apt-get install -y --no-install-recommends gcc libc6-dev libbluray-dev
+COPY tools/bluray-sample.c /tmp/bluray-sample.c
+RUN gcc -Wall -Wextra -Werror -O2 /tmp/bluray-sample.c -lbluray -o /tmp/bluray-sample
+
+FROM debian@sha256:a72b4433de1cf7d6bae0c4cee74d0547f58601a643b3375f070c51600d63b6b2 AS runtime
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    ca-certificates python3 python3-flask ffmpeg handbrake-cli cyanrip \
+    util-linux eject libdvdread8t64 libbluray2 tini \
+    && rm -rf /var/lib/apt/lists/*
+COPY --from=ffmpeg-regression /packages/ /tmp/patched-ffmpeg/
+RUN rm -f /tmp/patched-ffmpeg/*-extra*.deb \
+    && dpkg -i /tmp/patched-ffmpeg/*.deb && rm -rf /tmp/patched-ffmpeg
+# MakeMKV is installed by the recipient and mounted at runtime.
+COPY --from=reader-build /tmp/bluray-sample /opt/bluray-runtime/bluray-sample
+RUN set -eu; mkdir -p /opt/bluray-runtime/lib /opt/nvenc-runtime/lib \
+    /opt/handbrake-runtime/usr/bin /opt/handbrake-runtime/lib64; \
+    cp /usr/bin/HandBrakeCLI /opt/handbrake-runtime/usr/bin/; \
+    ln -s /lib64/ld-linux-x86-64.so.2 /opt/handbrake-runtime/lib64/ld-linux-x86-64.so.2; \
+    ln -s /usr/lib /opt/handbrake-runtime/usr/lib; \
+    ln -s /lib /opt/handbrake-runtime/lib; \
+    ln -s /usr/bin/ffmpeg /opt/nvenc-runtime/ffmpeg; \
+    ln -s /lib64/ld-linux-x86-64.so.2 /opt/nvenc-runtime/lib/ld-linux-x86-64.so.2; \
+    cp -L /lib64/ld-linux-x86-64.so.2 /opt/bluray-runtime/lib/; \
+    ldd /opt/bluray-runtime/bluray-sample | awk '/=> \/.* / {print $3}' > /tmp/reader-libraries; \
+    while IFS= read -r library; do cp -L "$library" /opt/bluray-runtime/lib/; done < /tmp/reader-libraries; \
+    mkdir -p /usr/share/dexter-build; \
+    dpkg-query -W > /usr/share/dexter-build/packages.tsv
+COPY --from=ffmpeg-build /build/hevc.patch /usr/share/dexter-build/hevc.patch
+COPY --from=ffmpeg-build /build/*.buildinfo /build/*.changes /usr/share/dexter-build/
+# Require Debian's fix for CVE-2026-76844 and CVE-2026-85091.
+RUN apt-get update && apt-get install -y --no-install-recommends zlib1g \
+    && dpkg --compare-versions "$(dpkg-query -W -f='${Version}' zlib1g)" ge '1:1.3.dfsg+really1.3.1-1+deb13u1' \
+    && rm -rf /var/lib/apt/lists/* \
+    && dpkg-query -W > /usr/share/dexter-build/packages.tsv
+COPY rootfs/ /
+ENV HOME=/config XDG_CONFIG_HOME=/config/xdg/config XDG_DATA_HOME=/config/xdg/data
+RUN chmod +x /usr/local/bin/HandBrakeCLI /usr/local/bin/dexter-nvenc /etc/services.d/ripper-web/run \
+    && HandBrakeCLI --version && dexter-nvenc -version \
+    && python3 -c 'import flask, ctypes; ctypes.CDLL("libdvdread.so.8")'
+EXPOSE 8080
+ENTRYPOINT ["/usr/bin/tini", "--", "/etc/services.d/ripper-web/run"]

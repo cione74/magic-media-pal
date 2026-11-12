@@ -1,0 +1,17 @@
+#!/bin/sh
+set -eu
+runtime="${DEXTER_HANDBRAKE_RUNTIME:-/opt/handbrake-runtime}"
+loader=""
+for candidate in "$runtime"/lib/ld-musl-*.so.1 "$runtime"/lib64/ld-linux-x86-64.so.2; do
+    [ -f "$candidate" ] || continue
+    if [ -n "$loader" ]; then
+        echo "HandBrake runtime has more than one loader; installation needs repair." >&2
+        exit 1
+    fi
+    loader="$candidate"
+done
+if [ -z "$loader" ] || [ ! -x "$runtime/usr/bin/HandBrakeCLI" ]; then
+    echo "HandBrake runtime is incomplete; run Dexter setup again." >&2
+    exit 1
+fi
+exec "$loader" --library-path "$runtime/lib:$runtime/usr/lib" "$runtime/usr/bin/HandBrakeCLI" "$@"

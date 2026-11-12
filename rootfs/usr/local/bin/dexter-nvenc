@@ -1,0 +1,5 @@
+#!/bin/sh
+runtime=/opt/nvenc-runtime
+exec "$runtime/lib/ld-linux-x86-64.so.2" \
+    --library-path "$runtime/lib:$runtime/driver:/lib:/lib/x86_64-linux-gnu:/usr/lib:/usr/lib/x86_64-linux-gnu:/usr/local/nvidia/lib64" \
+    "$runtime/ffmpeg" "$@"

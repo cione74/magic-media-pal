@@ -1,0 +1,1457 @@
+{
+  "image": "sha256:b00c9dbc51f7d125037b33ba2a10502b53083ff59d0fedf5f559e3f1da4215c1",
+  "scope": "Saved Debian image scan and targeted evidence. The separately installed MakeMKV runtime is outside scanner coverage.",
+  "findings": [
+    {
+      "advisory": "CVE-2026-76642",
+      "origin": "upstream",
+      "components": {
+        "bsdutils": "1:2.41.5-0+deb13u1",
+        "eject": "2.41.5-0+deb13u1",
+        "libblkid1": "2.41.5-0+deb13u1",
+        "liblastlog2-2": "2.41.5-0+deb13u1",
+        "libmount1": "2.41.5-0+deb13u1",
+        "libsmartcols1": "2.41.5-0+deb13u1",
+        "libuuid1": "2.41.5-0+deb13u1",
+        "login": "1:4.16.0-2+really2.41.5-0+deb13u1",
+        "mount": "2.41.5-0+deb13u1",
+        "util-linux": "2.41.5-0+deb13u1"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-76642",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-78408",
+      "origin": "upstream",
+      "components": {
+        "bsdutils": "1:2.41.5-0+deb13u1",
+        "eject": "2.41.5-0+deb13u1",
+        "libblkid1": "2.41.5-0+deb13u1",
+        "liblastlog2-2": "2.41.5-0+deb13u1",
+        "libmount1": "2.41.5-0+deb13u1",
+        "libsmartcols1": "2.41.5-0+deb13u1",
+        "libuuid1": "2.41.5-0+deb13u1",
+        "login": "1:4.16.0-2+really2.41.5-0+deb13u1",
+        "mount": "2.41.5-0+deb13u1",
+        "util-linux": "2.41.5-0+deb13u1"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-78408",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-78409",
+      "origin": "upstream",
+      "components": {
+        "bsdutils": "1:2.41.5-0+deb13u1",
+        "eject": "2.41.5-0+deb13u1",
+        "libblkid1": "2.41.5-0+deb13u1",
+        "liblastlog2-2": "2.41.5-0+deb13u1",
+        "libmount1": "2.41.5-0+deb13u1",
+        "libsmartcols1": "2.41.5-0+deb13u1",
+        "libuuid1": "2.41.5-0+deb13u1",
+        "login": "1:4.16.0-2+really2.41.5-0+deb13u1",
+        "mount": "2.41.5-0+deb13u1",
+        "util-linux": "2.41.5-0+deb13u1"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-78409",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-78410",
+      "origin": "upstream",
+      "components": {
+        "bsdutils": "1:2.41.5-0+deb13u1",
+        "eject": "2.41.5-0+deb13u1",
+        "libblkid1": "2.41.5-0+deb13u1",
+        "liblastlog2-2": "2.41.5-0+deb13u1",
+        "libmount1": "2.41.5-0+deb13u1",
+        "libsmartcols1": "2.41.5-0+deb13u1",
+        "libuuid1": "2.41.5-0+deb13u1",
+        "login": "1:4.16.0-2+really2.41.5-0+deb13u1",
+        "mount": "2.41.5-0+deb13u1",
+        "util-linux": "2.41.5-0+deb13u1"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-78410",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-58049",
+      "origin": "upstream",
+      "components": {
+        "ffmpeg": "7:7.1.5-0+deb13u1+dexter1",
+        "libavcodec61": "7:7.1.5-0+deb13u1+dexter1",
+        "libavdevice61": "7:7.1.5-0+deb13u1+dexter1",
+        "libavfilter10": "7:7.1.5-0+deb13u1+dexter1",
+        "libavformat61": "7:7.1.5-0+deb13u1+dexter1",
+        "libavutil59": "7:7.1.5-0+deb13u1+dexter1",
+        "libpostproc58": "7:7.1.5-0+deb13u1+dexter1",
+        "libswresample5": "7:7.1.5-0+deb13u1+dexter1",
+        "libswscale8": "7:7.1.5-0+deb13u1+dexter1"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-58049",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-64830",
+      "origin": "upstream",
+      "components": {
+        "ffmpeg": "7:7.1.5-0+deb13u1+dexter1",
+        "libavcodec61": "7:7.1.5-0+deb13u1+dexter1",
+        "libavdevice61": "7:7.1.5-0+deb13u1+dexter1",
+        "libavfilter10": "7:7.1.5-0+deb13u1+dexter1",
+        "libavformat61": "7:7.1.5-0+deb13u1+dexter1",
+        "libavutil59": "7:7.1.5-0+deb13u1+dexter1",
+        "libpostproc58": "7:7.1.5-0+deb13u1+dexter1",
+        "libswresample5": "7:7.1.5-0+deb13u1+dexter1",
+        "libswscale8": "7:7.1.5-0+deb13u1+dexter1"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-64830",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-64832",
+      "origin": "upstream",
+      "components": {
+        "ffmpeg": "7:7.1.5-0+deb13u1+dexter1",
+        "libavcodec61": "7:7.1.5-0+deb13u1+dexter1",
+        "libavdevice61": "7:7.1.5-0+deb13u1+dexter1",
+        "libavfilter10": "7:7.1.5-0+deb13u1+dexter1",
+        "libavformat61": "7:7.1.5-0+deb13u1+dexter1",
+        "libavutil59": "7:7.1.5-0+deb13u1+dexter1",
+        "libpostproc58": "7:7.1.5-0+deb13u1+dexter1",
+        "libswresample5": "7:7.1.5-0+deb13u1+dexter1",
+        "libswscale8": "7:7.1.5-0+deb13u1+dexter1"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-64832",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-64833",
+      "origin": "upstream",
+      "components": {
+        "ffmpeg": "7:7.1.5-0+deb13u1+dexter1",
+        "libavcodec61": "7:7.1.5-0+deb13u1+dexter1",
+        "libavdevice61": "7:7.1.5-0+deb13u1+dexter1",
+        "libavfilter10": "7:7.1.5-0+deb13u1+dexter1",
+        "libavformat61": "7:7.1.5-0+deb13u1+dexter1",
+        "libavutil59": "7:7.1.5-0+deb13u1+dexter1",
+        "libpostproc58": "7:7.1.5-0+deb13u1+dexter1",
+        "libswresample5": "7:7.1.5-0+deb13u1+dexter1",
+        "libswscale8": "7:7.1.5-0+deb13u1+dexter1"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-64833",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-64834",
+      "origin": "upstream",
+      "components": {
+        "ffmpeg": "7:7.1.5-0+deb13u1+dexter1",
+        "libavcodec61": "7:7.1.5-0+deb13u1+dexter1",
+        "libavdevice61": "7:7.1.5-0+deb13u1+dexter1",
+        "libavfilter10": "7:7.1.5-0+deb13u1+dexter1",
+        "libavformat61": "7:7.1.5-0+deb13u1+dexter1",
+        "libavutil59": "7:7.1.5-0+deb13u1+dexter1",
+        "libpostproc58": "7:7.1.5-0+deb13u1+dexter1",
+        "libswresample5": "7:7.1.5-0+deb13u1+dexter1",
+        "libswscale8": "7:7.1.5-0+deb13u1+dexter1"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-64834",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-64835",
+      "origin": "upstream",
+      "components": {
+        "ffmpeg": "7:7.1.5-0+deb13u1+dexter1",
+        "libavcodec61": "7:7.1.5-0+deb13u1+dexter1",
+        "libavdevice61": "7:7.1.5-0+deb13u1+dexter1",
+        "libavfilter10": "7:7.1.5-0+deb13u1+dexter1",
+        "libavformat61": "7:7.1.5-0+deb13u1+dexter1",
+        "libavutil59": "7:7.1.5-0+deb13u1+dexter1",
+        "libpostproc58": "7:7.1.5-0+deb13u1+dexter1",
+        "libswresample5": "7:7.1.5-0+deb13u1+dexter1",
+        "libswscale8": "7:7.1.5-0+deb13u1+dexter1"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-64835",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-66036",
+      "origin": "upstream",
+      "components": {
+        "ffmpeg": "7:7.1.5-0+deb13u1+dexter1",
+        "libavcodec61": "7:7.1.5-0+deb13u1+dexter1",
+        "libavdevice61": "7:7.1.5-0+deb13u1+dexter1",
+        "libavfilter10": "7:7.1.5-0+deb13u1+dexter1",
+        "libavformat61": "7:7.1.5-0+deb13u1+dexter1",
+        "libavutil59": "7:7.1.5-0+deb13u1+dexter1",
+        "libpostproc58": "7:7.1.5-0+deb13u1+dexter1",
+        "libswresample5": "7:7.1.5-0+deb13u1+dexter1",
+        "libswscale8": "7:7.1.5-0+deb13u1+dexter1"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-66036",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-66039",
+      "origin": "upstream",
+      "components": {
+        "ffmpeg": "7:7.1.5-0+deb13u1+dexter1",
+        "libavcodec61": "7:7.1.5-0+deb13u1+dexter1",
+        "libavdevice61": "7:7.1.5-0+deb13u1+dexter1",
+        "libavfilter10": "7:7.1.5-0+deb13u1+dexter1",
+        "libavformat61": "7:7.1.5-0+deb13u1+dexter1",
+        "libavutil59": "7:7.1.5-0+deb13u1+dexter1",
+        "libpostproc58": "7:7.1.5-0+deb13u1+dexter1",
+        "libswresample5": "7:7.1.5-0+deb13u1+dexter1",
+        "libswscale8": "7:7.1.5-0+deb13u1+dexter1"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-66039",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-66040",
+      "origin": "upstream",
+      "components": {
+        "ffmpeg": "7:7.1.5-0+deb13u1+dexter1",
+        "libavcodec61": "7:7.1.5-0+deb13u1+dexter1",
+        "libavdevice61": "7:7.1.5-0+deb13u1+dexter1",
+        "libavfilter10": "7:7.1.5-0+deb13u1+dexter1",
+        "libavformat61": "7:7.1.5-0+deb13u1+dexter1",
+        "libavutil59": "7:7.1.5-0+deb13u1+dexter1",
+        "libpostproc58": "7:7.1.5-0+deb13u1+dexter1",
+        "libswresample5": "7:7.1.5-0+deb13u1+dexter1",
+        "libswscale8": "7:7.1.5-0+deb13u1+dexter1"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-66040",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-66041",
+      "origin": "upstream",
+      "components": {
+        "ffmpeg": "7:7.1.5-0+deb13u1+dexter1",
+        "libavcodec61": "7:7.1.5-0+deb13u1+dexter1",
+        "libavdevice61": "7:7.1.5-0+deb13u1+dexter1",
+        "libavfilter10": "7:7.1.5-0+deb13u1+dexter1",
+        "libavformat61": "7:7.1.5-0+deb13u1+dexter1",
+        "libavutil59": "7:7.1.5-0+deb13u1+dexter1",
+        "libpostproc58": "7:7.1.5-0+deb13u1+dexter1",
+        "libswresample5": "7:7.1.5-0+deb13u1+dexter1",
+        "libswscale8": "7:7.1.5-0+deb13u1+dexter1"
+      },
+      "severity": "HIGH",
+      "reachability": "The named quirc filter is absent from the tested Debian FFmpeg.",
+      "impact": "Memory corruption in the affected filter.",
+      "patch_or_mitigation": "Affected filter absent in tested binary.",
+      "status": "not reachable via tested FFmpeg filter",
+      "residual_risk": "Other builds are outside this disposition.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-66041",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Advisory and actual filter list reviewed."
+    },
+    {
+      "advisory": "CVE-2026-70628",
+      "origin": "upstream",
+      "components": {
+        "ffmpeg": "7:7.1.5-0+deb13u1+dexter1",
+        "libavcodec61": "7:7.1.5-0+deb13u1+dexter1",
+        "libavdevice61": "7:7.1.5-0+deb13u1+dexter1",
+        "libavfilter10": "7:7.1.5-0+deb13u1+dexter1",
+        "libavformat61": "7:7.1.5-0+deb13u1+dexter1",
+        "libavutil59": "7:7.1.5-0+deb13u1+dexter1",
+        "libpostproc58": "7:7.1.5-0+deb13u1+dexter1",
+        "libswresample5": "7:7.1.5-0+deb13u1+dexter1",
+        "libswscale8": "7:7.1.5-0+deb13u1+dexter1"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-70628",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-70632",
+      "origin": "upstream",
+      "components": {
+        "ffmpeg": "7:7.1.5-0+deb13u1+dexter1",
+        "libavcodec61": "7:7.1.5-0+deb13u1+dexter1",
+        "libavdevice61": "7:7.1.5-0+deb13u1+dexter1",
+        "libavfilter10": "7:7.1.5-0+deb13u1+dexter1",
+        "libavformat61": "7:7.1.5-0+deb13u1+dexter1",
+        "libavutil59": "7:7.1.5-0+deb13u1+dexter1",
+        "libpostproc58": "7:7.1.5-0+deb13u1+dexter1",
+        "libswresample5": "7:7.1.5-0+deb13u1+dexter1",
+        "libswscale8": "7:7.1.5-0+deb13u1+dexter1"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-70632",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-75141",
+      "origin": "upstream",
+      "components": {
+        "ffmpeg": "7:7.1.5-0+deb13u1+dexter1",
+        "libavcodec61": "7:7.1.5-0+deb13u1+dexter1",
+        "libavdevice61": "7:7.1.5-0+deb13u1+dexter1",
+        "libavfilter10": "7:7.1.5-0+deb13u1+dexter1",
+        "libavformat61": "7:7.1.5-0+deb13u1+dexter1",
+        "libavutil59": "7:7.1.5-0+deb13u1+dexter1",
+        "libpostproc58": "7:7.1.5-0+deb13u1+dexter1",
+        "libswresample5": "7:7.1.5-0+deb13u1+dexter1",
+        "libswscale8": "7:7.1.5-0+deb13u1+dexter1"
+      },
+      "severity": "HIGH",
+      "reachability": "HEVC muxing is in scope.",
+      "impact": "HEVC configuration writer memory corruption.",
+      "patch_or_mitigation": "Upstream guard backported in the Debian FFmpeg recipe and boundary test passed.",
+      "status": "fixed in tested Debian FFmpeg",
+      "residual_risk": "Other FFmpeg copies and other advisories are outside this disposition.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-75141",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Build and boundary test reviewed."
+    },
+    {
+      "advisory": "CVE-2026-75142",
+      "origin": "upstream",
+      "components": {
+        "ffmpeg": "7:7.1.5-0+deb13u1+dexter1",
+        "libavcodec61": "7:7.1.5-0+deb13u1+dexter1",
+        "libavdevice61": "7:7.1.5-0+deb13u1+dexter1",
+        "libavfilter10": "7:7.1.5-0+deb13u1+dexter1",
+        "libavformat61": "7:7.1.5-0+deb13u1+dexter1",
+        "libavutil59": "7:7.1.5-0+deb13u1+dexter1",
+        "libpostproc58": "7:7.1.5-0+deb13u1+dexter1",
+        "libswresample5": "7:7.1.5-0+deb13u1+dexter1",
+        "libswscale8": "7:7.1.5-0+deb13u1+dexter1"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-75142",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-75143",
+      "origin": "upstream",
+      "components": {
+        "ffmpeg": "7:7.1.5-0+deb13u1+dexter1",
+        "libavcodec61": "7:7.1.5-0+deb13u1+dexter1",
+        "libavdevice61": "7:7.1.5-0+deb13u1+dexter1",
+        "libavfilter10": "7:7.1.5-0+deb13u1+dexter1",
+        "libavformat61": "7:7.1.5-0+deb13u1+dexter1",
+        "libavutil59": "7:7.1.5-0+deb13u1+dexter1",
+        "libpostproc58": "7:7.1.5-0+deb13u1+dexter1",
+        "libswresample5": "7:7.1.5-0+deb13u1+dexter1",
+        "libswscale8": "7:7.1.5-0+deb13u1+dexter1"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-75143",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-75144",
+      "origin": "upstream",
+      "components": {
+        "ffmpeg": "7:7.1.5-0+deb13u1+dexter1",
+        "libavcodec61": "7:7.1.5-0+deb13u1+dexter1",
+        "libavdevice61": "7:7.1.5-0+deb13u1+dexter1",
+        "libavfilter10": "7:7.1.5-0+deb13u1+dexter1",
+        "libavformat61": "7:7.1.5-0+deb13u1+dexter1",
+        "libavutil59": "7:7.1.5-0+deb13u1+dexter1",
+        "libpostproc58": "7:7.1.5-0+deb13u1+dexter1",
+        "libswresample5": "7:7.1.5-0+deb13u1+dexter1",
+        "libswscale8": "7:7.1.5-0+deb13u1+dexter1"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-75144",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-75146",
+      "origin": "upstream",
+      "components": {
+        "ffmpeg": "7:7.1.5-0+deb13u1+dexter1",
+        "libavcodec61": "7:7.1.5-0+deb13u1+dexter1",
+        "libavdevice61": "7:7.1.5-0+deb13u1+dexter1",
+        "libavfilter10": "7:7.1.5-0+deb13u1+dexter1",
+        "libavformat61": "7:7.1.5-0+deb13u1+dexter1",
+        "libavutil59": "7:7.1.5-0+deb13u1+dexter1",
+        "libpostproc58": "7:7.1.5-0+deb13u1+dexter1",
+        "libswresample5": "7:7.1.5-0+deb13u1+dexter1",
+        "libswscale8": "7:7.1.5-0+deb13u1+dexter1"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-75146",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-54369",
+      "origin": "upstream",
+      "components": {
+        "libacl1": "2.3.2-2+b1"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-54369",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-16554",
+      "origin": "upstream",
+      "components": {
+        "libcjson1": "1.7.18-3.1+deb13u1"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-16554",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-29036",
+      "origin": "upstream",
+      "components": {
+        "libcjson1": "1.7.18-3.1+deb13u1"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-29036",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-67215",
+      "origin": "upstream",
+      "components": {
+        "libcjson1": "1.7.18-3.1+deb13u1"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-67215",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-67216",
+      "origin": "upstream",
+      "components": {
+        "libcjson1": "1.7.18-3.1+deb13u1"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-67216",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-87933",
+      "origin": "upstream",
+      "components": {
+        "libcjson1": "1.7.18-3.1+deb13u1"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-87933",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-12064",
+      "origin": "upstream",
+      "components": {
+        "libcurl4t64": "8.14.1-2+deb13u7"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-12064",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-8458",
+      "origin": "upstream",
+      "components": {
+        "libcurl4t64": "8.14.1-2+deb13u7"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-8458",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-113351",
+      "origin": "upstream",
+      "components": {
+        "libexpat1": "2.9.0-1~deb13u1"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-113351",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-115506",
+      "origin": "upstream",
+      "components": {
+        "libexpat1": "2.9.0-1~deb13u1"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-115506",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-117610",
+      "origin": "upstream",
+      "components": {
+        "libexpat1": "2.9.0-1~deb13u1"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-117610",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-118370",
+      "origin": "upstream",
+      "components": {
+        "libexpat1": "2.9.0-1~deb13u1"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-118370",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-107364",
+      "origin": "upstream",
+      "components": {
+        "libgssapi-krb5-2": "1.21.3-5+deb13u1",
+        "libk5crypto3": "1.21.3-5+deb13u1",
+        "libkrb5-3": "1.21.3-5+deb13u1",
+        "libkrb5support0": "1.21.3-5+deb13u1"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-107364",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-112315",
+      "origin": "upstream",
+      "components": {
+        "libgssapi-krb5-2": "1.21.3-5+deb13u1",
+        "libk5crypto3": "1.21.3-5+deb13u1",
+        "libkrb5-3": "1.21.3-5+deb13u1",
+        "libkrb5support0": "1.21.3-5+deb13u1"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-112315",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-112316",
+      "origin": "upstream",
+      "components": {
+        "libgssapi-krb5-2": "1.21.3-5+deb13u1",
+        "libk5crypto3": "1.21.3-5+deb13u1",
+        "libkrb5-3": "1.21.3-5+deb13u1",
+        "libkrb5support0": "1.21.3-5+deb13u1"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-112316",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-112317",
+      "origin": "upstream",
+      "components": {
+        "libgssapi-krb5-2": "1.21.3-5+deb13u1",
+        "libk5crypto3": "1.21.3-5+deb13u1",
+        "libkrb5-3": "1.21.3-5+deb13u1",
+        "libkrb5support0": "1.21.3-5+deb13u1"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-112317",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-112318",
+      "origin": "upstream",
+      "components": {
+        "libgssapi-krb5-2": "1.21.3-5+deb13u1",
+        "libk5crypto3": "1.21.3-5+deb13u1",
+        "libkrb5-3": "1.21.3-5+deb13u1",
+        "libkrb5support0": "1.21.3-5+deb13u1"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-112318",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-112319",
+      "origin": "upstream",
+      "components": {
+        "libgssapi-krb5-2": "1.21.3-5+deb13u1",
+        "libk5crypto3": "1.21.3-5+deb13u1",
+        "libkrb5-3": "1.21.3-5+deb13u1",
+        "libkrb5support0": "1.21.3-5+deb13u1"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-112319",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-112320",
+      "origin": "upstream",
+      "components": {
+        "libgssapi-krb5-2": "1.21.3-5+deb13u1",
+        "libk5crypto3": "1.21.3-5+deb13u1",
+        "libkrb5-3": "1.21.3-5+deb13u1",
+        "libkrb5support0": "1.21.3-5+deb13u1"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-112320",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-112321",
+      "origin": "upstream",
+      "components": {
+        "libgssapi-krb5-2": "1.21.3-5+deb13u1",
+        "libk5crypto3": "1.21.3-5+deb13u1",
+        "libkrb5-3": "1.21.3-5+deb13u1",
+        "libkrb5support0": "1.21.3-5+deb13u1"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-112321",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-112322",
+      "origin": "upstream",
+      "components": {
+        "libgssapi-krb5-2": "1.21.3-5+deb13u1",
+        "libk5crypto3": "1.21.3-5+deb13u1",
+        "libkrb5-3": "1.21.3-5+deb13u1",
+        "libkrb5support0": "1.21.3-5+deb13u1"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-112322",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-112323",
+      "origin": "upstream",
+      "components": {
+        "libgssapi-krb5-2": "1.21.3-5+deb13u1",
+        "libk5crypto3": "1.21.3-5+deb13u1",
+        "libkrb5-3": "1.21.3-5+deb13u1",
+        "libkrb5support0": "1.21.3-5+deb13u1"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-112323",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-118380",
+      "origin": "upstream",
+      "components": {
+        "libgssapi-krb5-2": "1.21.3-5+deb13u1",
+        "libk5crypto3": "1.21.3-5+deb13u1",
+        "libkrb5-3": "1.21.3-5+deb13u1",
+        "libkrb5support0": "1.21.3-5+deb13u1"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-118380",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-119079",
+      "origin": "upstream",
+      "components": {
+        "libgssapi-krb5-2": "1.21.3-5+deb13u1",
+        "libk5crypto3": "1.21.3-5+deb13u1",
+        "libkrb5-3": "1.21.3-5+deb13u1",
+        "libkrb5support0": "1.21.3-5+deb13u1"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-119079",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-71199",
+      "origin": "upstream",
+      "components": {
+        "libgssapi-krb5-2": "1.21.3-5+deb13u1",
+        "libk5crypto3": "1.21.3-5+deb13u1",
+        "libkrb5-3": "1.21.3-5+deb13u1",
+        "libkrb5support0": "1.21.3-5+deb13u1"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-71199",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-71200",
+      "origin": "upstream",
+      "components": {
+        "libgssapi-krb5-2": "1.21.3-5+deb13u1",
+        "libk5crypto3": "1.21.3-5+deb13u1",
+        "libkrb5-3": "1.21.3-5+deb13u1",
+        "libkrb5support0": "1.21.3-5+deb13u1"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-71200",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2025-69720",
+      "origin": "upstream",
+      "components": {
+        "libncursesw6": "6.5+20250216-2",
+        "libtinfo6": "6.5+20250216-2",
+        "ncurses-base": "6.5+20250216-2",
+        "ncurses-bin": "6.5+20250216-2"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2025-69720",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-15308",
+      "origin": "upstream",
+      "components": {
+        "libpython3.13-minimal": "3.13.5-2+deb13u5",
+        "libpython3.13-stdlib": "3.13.5-2+deb13u5",
+        "python3.13": "3.13.5-2+deb13u5",
+        "python3.13-minimal": "3.13.5-2+deb13u5"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-15308",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-19445",
+      "origin": "upstream",
+      "components": {
+        "libpython3.13-minimal": "3.13.5-2+deb13u5",
+        "libpython3.13-stdlib": "3.13.5-2+deb13u5",
+        "python3.13": "3.13.5-2+deb13u5",
+        "python3.13-minimal": "3.13.5-2+deb13u5"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-19445",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-19553",
+      "origin": "upstream",
+      "components": {
+        "libpython3.13-minimal": "3.13.5-2+deb13u5",
+        "libpython3.13-stdlib": "3.13.5-2+deb13u5",
+        "python3.13": "3.13.5-2+deb13u5",
+        "python3.13-minimal": "3.13.5-2+deb13u5"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-19553",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-7210",
+      "origin": "upstream",
+      "components": {
+        "libpython3.13-minimal": "3.13.5-2+deb13u5",
+        "libpython3.13-stdlib": "3.13.5-2+deb13u5",
+        "python3.13": "3.13.5-2+deb13u5",
+        "python3.13-minimal": "3.13.5-2+deb13u5"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-7210",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-82049",
+      "origin": "upstream",
+      "components": {
+        "libpython3.13-minimal": "3.13.5-2+deb13u5",
+        "libpython3.13-stdlib": "3.13.5-2+deb13u5",
+        "python3.13": "3.13.5-2+deb13u5",
+        "python3.13-minimal": "3.13.5-2+deb13u5"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-82049",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-37555",
+      "origin": "upstream",
+      "components": {
+        "libsndfile1": "1.2.2-2+deb13u1"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-37555",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-119373",
+      "origin": "upstream",
+      "components": {
+        "libsqlite3-0": "3.46.1-7+deb13u2"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-119373",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-119374",
+      "origin": "upstream",
+      "components": {
+        "libsqlite3-0": "3.46.1-7+deb13u2"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-119374",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-119379",
+      "origin": "upstream",
+      "components": {
+        "libsqlite3-0": "3.46.1-7+deb13u2"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-119379",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-16742",
+      "origin": "upstream",
+      "components": {
+        "libsystemd0": "257.13-1~deb13u1",
+        "libudev1": "257.13-1~deb13u1"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-16742",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-36849",
+      "origin": "upstream",
+      "components": {
+        "libtiff6": "4.7.0-3+deb13u3"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-36849",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-52490",
+      "origin": "upstream",
+      "components": {
+        "libtiff6": "4.7.0-3+deb13u3"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-52490",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-88806",
+      "origin": "upstream",
+      "components": {
+        "libx11-6": "2:1.8.12-1",
+        "libx11-data": "2:1.8.12-1",
+        "libx11-xcb1": "2:1.8.12-1"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-88806",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-109089",
+      "origin": "upstream",
+      "components": {
+        "libxi6": "2:1.8.2-1"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-109089",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-109090",
+      "origin": "upstream",
+      "components": {
+        "libxi6": "2:1.8.2-1"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-109090",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-6653",
+      "origin": "upstream",
+      "components": {
+        "libxml2": "2.12.7+dfsg+really2.9.14-2.1+deb13u3"
+      },
+      "severity": "CRITICAL",
+      "reachability": "FFmpeg and HandBrake load libxml2. Normal workflow reachability is unverified.",
+      "impact": "Denial of service. Scanner rates critical and Debian rates minor for trixie.",
+      "patch_or_mitigation": "No fixed trixie package in reviewed advisory. Use trusted media and localhost deployment.",
+      "status": "pending",
+      "residual_risk": "Parser exposure remains open.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-6653",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Debian advisory and installed library use reviewed."
+    },
+    {
+      "advisory": "CVE-2026-74860",
+      "origin": "upstream",
+      "components": {
+        "libxml2": "2.12.7+dfsg+really2.9.14-2.1+deb13u3"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-74860",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-86138",
+      "origin": "upstream",
+      "components": {
+        "libxml2": "2.12.7+dfsg+really2.9.14-2.1+deb13u3"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-86138",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-86139",
+      "origin": "upstream",
+      "components": {
+        "libxml2": "2.12.7+dfsg+really2.9.14-2.1+deb13u3"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-86139",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-86140",
+      "origin": "upstream",
+      "components": {
+        "libxml2": "2.12.7+dfsg+really2.9.14-2.1+deb13u3"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-86140",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-86142",
+      "origin": "upstream",
+      "components": {
+        "libxml2": "2.12.7+dfsg+really2.9.14-2.1+deb13u3"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-86142",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-86143",
+      "origin": "upstream",
+      "components": {
+        "libxml2": "2.12.7+dfsg+really2.9.14-2.1+deb13u3"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-86143",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-86144",
+      "origin": "upstream",
+      "components": {
+        "libxml2": "2.12.7+dfsg+really2.9.14-2.1+deb13u3"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-86144",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-88807",
+      "origin": "upstream",
+      "components": {
+        "libxrender1": "1:0.9.12-1"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-88807",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-9538",
+      "origin": "upstream",
+      "components": {
+        "perl-base": "5.40.1-6+deb13u1"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-9538",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-7246",
+      "origin": "upstream",
+      "components": {
+        "python3-click": "8.2.0+0.really.8.1.8-1"
+      },
+      "severity": "HIGH",
+      "reachability": "Pending workflow applicability review",
+      "impact": "See advisory. Impact in Dexter is unverified.",
+      "patch_or_mitigation": "No fixed version reported by this scan. Trusted local access and media are deployment mitigations.",
+      "status": "pending",
+      "residual_risk": "Unverified exposure. Do not treat as safe.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-7246",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Recorded from saved scanner evidence. Individual applicability review pending."
+    },
+    {
+      "advisory": "CVE-2026-76844",
+      "origin": "upstream",
+      "components": {
+        "zlib1g": "1:1.3.dfsg+really1.3.1-1+deb13u1"
+      },
+      "severity": "HIGH",
+      "reachability": "Used by runtime libraries. Specific write-error workflow was not reproduced.",
+      "impact": "Memory corruption in affected gzip write paths.",
+      "patch_or_mitigation": "Debian fixed package required by build.",
+      "status": "fixed in tested image",
+      "residual_risk": "Older builds remain outside this disposition.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-76844",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Fixed package and saved rescan reviewed."
+    },
+    {
+      "advisory": "CVE-2026-85091",
+      "origin": "upstream",
+      "components": {
+        "zlib1g": "1:1.3.dfsg+really1.3.1-1+deb13u1"
+      },
+      "severity": "HIGH",
+      "reachability": "Used by runtime libraries. Specific write-error workflow was not reproduced.",
+      "impact": "Memory corruption in affected gzip write paths.",
+      "patch_or_mitigation": "Debian fixed package required by build.",
+      "status": "fixed in tested image",
+      "residual_risk": "Older builds remain outside this disposition.",
+      "source": "https://security-tracker.debian.org/tracker/CVE-2026-85091",
+      "last_reviewed": "2026-11-11",
+      "review_scope": "Fixed package and saved rescan reviewed."
+    }
+  ]
+}

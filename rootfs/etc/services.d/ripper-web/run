@@ -1,0 +1,5 @@
+#!/bin/sh
+export HOME=/config
+export XDG_CONFIG_HOME=/config/xdg/config
+export XDG_DATA_HOME=/config/xdg/data
+exec python3 /opt/dexter-ripper/app.py

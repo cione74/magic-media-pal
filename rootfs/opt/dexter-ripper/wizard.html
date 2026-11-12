@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+{% if scan_running or (queue_view and queue_active) %}<meta http-equiv="refresh" content="3">{% endif %}
+<title>Magic Media PAL · {{ "Queue" if queue_view else "Prepare your disc" }}</title>
+{{ base_style | safe }}
+<link rel="stylesheet" href="/assets/dexter.css"></head>
+<body class="wizard-page">
+<div class="workspace-layout">
+<aside class="workspace-sidebar wizard-sidebar">
+<section class="card"><div class="brand"><span class="brand-mark">◆</span> Magic Media PAL</div>
+<nav aria-label="Main navigation">
+<a href="/">Home</a><a href="/wizard" {% if not queue_view %}aria-current="page"{% endif %}>Prepare a disc</a>
+<a href="/workflow-queue" {% if queue_view %}aria-current="page"{% endif %}>Queue · {{ queue_count }}</a>
+<a href="/movie-history">History</a><a href="/settings">Settings</a>
+</nav></section>
+<section class="card drive-info"><strong>Disc drive</strong><p>{{ drive_name }}</p><p class="muted">{{ disc_name or "No scanned disc" }}</p>
+<form method="post" action="/eject"><button {% if running %}disabled{% endif %}>Eject</button></form></section>
+<section class="card drive-info"><strong>Working storage</strong><p class="muted">{{ storage.free if storage else "Check storage before starting" }} free</p><a class="button" href="/storage">Storage choices</a></section>
+</aside>
+<main class="workspace-main" id="main-content">
+{% if queue_view %}
+<section class="card"><h1 class="wizard-title">Disc queue</h1><p class="muted">Disc jobs keep running when you close your browser. Interrupted jobs need a fresh disc check before retrying.</p>
+{% for item in queue | reverse %}
+<div class="title-choice"><strong>{{ queue_labels.get(item.id,item.plan.title) }}</strong><p>{{ {"queued":"Waiting","saving":"Getting ready","starting":"Getting ready","running":"Working now","completed":"Ready","failed":"Needs attention","paused":"Paused","needs_review":"Needs your review","cancelled":"Cancelled"}.get(item.status,item.status | replace("_"," ") | capitalize) }}</p>
+{% if item.detail %}<p class="muted">{{ item.detail }}</p>{% endif %}
+{% if item.status in ("failed","cancelled","needs_review","paused") %}
+<form method="post" action="/workflow-queue/{{ item.id }}/retry"><button>{{ "Resume verified copy" if item.id == resumable_entry else "Check and retry" }}</button></form>
+{% endif %}</div>
+{% else %}<p>No disc jobs have been submitted yet.</p>{% endfor %}
+<div class="wizard-actions"><a class="button" href="/wizard">Prepare a disc</a><a class="button" href="/">Current job</a></div></section>
+{% elif not disc or disc.kind not in ("video","audio") %}
+<ol class="wizard-steps" aria-label="Disc preparation"><li aria-current="step"><span class="step-dot">1</span>Scan Disc</li><li><span class="step-dot">2</span>Select</li><li><span class="step-dot">3</span>Plan Workflow</li><li><span class="step-dot">4</span>Review & Start</li></ol>
+<section class="card"><h1 class="wizard-title">{{ "Reading your disc…" if scan_running else "Scan your disc" }}</h1>
+<p class="muted">{{ job.status if job.status else "Insert a movie disc or music CD, then scan it to choose what to keep." }}</p>
+{% if scan_running %}<progress aria-label="Reading disc"></progress><p class="muted">Magic Media PAL is identifying the disc and its contents.</p>
+{% else %}<form method="post" action="/scan" {% if staging_has_media %}onsubmit="return confirm('Start a new scan and delete the temporary files from previous rips?')"{% endif %}>
+<input type="hidden" name="return_to" value="wizard">{% if staging_has_media %}<input type="hidden" name="clear_staging" value="yes">{% endif %}
+<button class="button-primary" {% if running %}disabled{% endif %}>Scan Disc</button></form>{% endif %}
+{% if job.log %}<details><summary>Scan details</summary><pre>{{ job.log | join('\n') }}</pre></details>{% endif %}</section>
+{% else %}
+<ol class="wizard-steps" aria-label="Disc preparation">
+{% for label in ("Scan Disc", "Select Tracks" if disc.kind == "audio" else "Select Titles", "Plan Workflow","Review & Start") %}
+<li {% if step == loop.index %}aria-current="step"{% endif %}><span class="step-dot">{{ "✓" if loop.index < step else loop.index }}</span>{{ label }}</li>
+{% endfor %}
+</ol>
+{% if errors %}<div class="wizard-errors" role="alert">{% for message in errors %}<p>{{ message }}</p>{% endfor %}</div>{% endif %}
+<form method="post" action="/wizard" id="wizard-form">
+<input type="hidden" name="draft_id" value="{{ draft.id }}"><input type="hidden" name="revision" value="{{ draft.revision }}"><input type="hidden" name="step" value="{{ step }}">
+<section class="card">
+{% if step == 1 %}
+<h1 class="wizard-title">Disc scan complete</h1><p class="muted">Magic Media PAL found content on your disc. Choose what you want to keep next.</p>
+<h2>{{ disc_name }}</h2>
+<dl class="wizard-summary"><dt>Disc</dt><dd>{{ disc.type }}</dd>{% if disc.kind == "audio" %}<dt>Tracks found</dt><dd>{{ audio_tracks | length }}</dd><dt>Album artist</dt><dd>{{ disc.album_artist or "Confirm album details in Prepare Output" }}</dd>{% else %}<dt>Titles found</dt><dd>{{ disc.titles | length }}</dd><dt>Main feature candidate</dt><dd>{{ main_title.duration if main_title else "Choose a title in the next step" }}{% if main_title %} · {{ main_title.size }}{% endif %}</dd>{% endif %}<dt>Drive</dt><dd>{{ drive_name }}</dd></dl>
+<div class="wizard-notice">{{ "Saved scan from the previous session. Rescan before starting." if stale_scan else "Scan complete. Ready to choose what to rip." }}</div>
+<details><summary>Scan details</summary><p class="muted">Disc label {{ disc.label }}</p><p class="muted">{{ main_title.scan_video_hint if main_title else "" }}</p><a href="/?advanced=1">Open disc diagnostics</a></details>
+<div class="wizard-actions"><a class="button" href="/?advanced=1">Disc controls</a><button name="action" value="next" class="button-primary">Next: {{ "Choose Tracks" if disc.kind == "audio" else "Choose Titles" }} →</button></div>
+{% elif step == 2 and disc.kind == "audio" %}
+<h1 class="wizard-title">Choose your music tracks</h1><p class="muted">Keep the whole album or select individual songs. Nothing is selected automatically.</p>
+<input type="hidden" name="tracks_present" value="yes">
+<div class="action-group"><button type="button" id="select-all-tracks">Select all tracks</button> <button type="button" id="clear-tracks">Clear selection</button></div>
+{% for track in audio_tracks %}
+<div class="title-choice"><label><input type="checkbox" name="tracks" value="{{ track.number }}" {% if track.number|string in fields.tracks %}checked{% endif %}><strong>{{ track.number }}. {{ track.title }}</strong></label><p class="title-meta">{{ track.duration }}</p></div>
+{% endfor %}
+<div class="wizard-actions"><button name="action" value="back" formnovalidate>← Back</button><button name="action" value="next" id="titles-next" class="button-primary" {% if not fields.tracks %}disabled{% endif %}>Next: Prepare Output →</button></div>
+{% elif step == 2 %}
+<h1 class="wizard-title">Choose what to rip</h1><p class="muted">Select your movie, episodes or extras. Nothing is selected automatically.</p>
+<input type="hidden" name="titles_present" value="yes">
+<label>Disc contents<select name="content_kind"><option value="movie" {% if fields.content_kind != 'tv' %}selected{% endif %}>Movie or extras</option><option value="tv" {% if fields.content_kind == 'tv' %}selected{% endif %}>TV episodes</option></select></label>
+{% if fields.content_kind == 'tv' and identity.series %}<p><strong>{{ identity.series }}</strong> · Season {{ identity.season }} · Disc {{ identity.disc_number }}</p>{% endif %}
+<details {% if fields.content_kind == 'tv' and not identity.episode_candidates %}open{% endif %}><summary>Series details and identification</summary>
+<p>Episode names are suggestions until you check their title assignments. You can continue with unassigned titles and keep them locally.</p>
+<input type="hidden" name="mapping_present" value="yes">
+<div class="plan-grid"><label>Series name<input name="series_name" maxlength="150" value="{{ fields.get('series_name',identity.series) }}"></label>
+<label>Season<input name="identity_season" type="number" min="0" max="999" value="{{ fields.get('identity_season',identity.season) }}"></label>
+<label>Disc number<input name="identity_disc" type="number" min="1" max="999" value="{{ fields.get('identity_disc',identity.disc_number) }}"></label>
+<label>Series match<select name="metadata_show_id"><option value="">Match by name when unambiguous</option>{% for candidate in identity.candidates if candidate.provider == 'TVmaze' %}<option value="{{ candidate.id }}" {% if fields.get('metadata_show_id') == candidate.id|string %}selected{% endif %}>{{ candidate.name }} · {{ candidate.premiered }}</option>{% endfor %}</select></label>
+<label>Episode order<select name="metadata_order"><option value="aired">Aired order</option>{% for order in identity.orders %}<option value="{{ order.id }}" {% if fields.get('metadata_order') == order.id|string %}selected{% endif %}>{{ order.name }}</option>{% endfor %}</select></label></div>
+<button name="action" value="identify" formnovalidate>Find episode details</button>
+<button name="action" value="{{ 'metadata-online' if metadata_offline else 'metadata-offline' }}" formnovalidate>{{ 'Enable online identification' if metadata_offline else 'Use saved details only' }}</button>
+<p class="muted">{{ 'Offline — only saved metadata is used.' if metadata_offline else 'Online identification enabled. Lookups send disc identifiers or the series name; your corrections stay local.' }}</p>
+{% for notice in identity.provider_status %}<p class="muted">{{ notice }}</p>{% endfor %}
+{% if identity.episode_candidates %}<details><summary>Episode candidates · {{ identity.episode_candidates|length }}</summary><ul>{% for episode in identity.episode_candidates %}<li>S{{ '%02d'|format(episode.season) }}E{{ '%02d'|format(episode.number) }} · {{ episode.name }} · <a href="{{ episode.source }}" target="_blank" rel="noreferrer">TVmaze</a></li>{% endfor %}</ul></details>{% endif %}
+<p><a href="/data-sources">Credits and data sources</a></p>
+</details>
+<div class="controls"><button type="button" onclick="selectDiscTitles(true)">Select all titles</button><button type="button" onclick="selectDiscTitles(false)">Deselect all</button></div>
+{% macro title_list(items) %}
+{% for title in items %}
+{% set mapping=identity.mappings.get(title.id|string,{}) %}
+<div class="title-choice"><label for="title-{{ title.id }}"><input id="title-{{ title.id }}" type="checkbox" name="title_ids" value="{{ title.id }}" {% if title.id | string in fields.title_ids %}checked{% endif %}><strong>{{ mapping.get('name') or ('Unassigned episode' if fields.content_kind == 'tv' else title.name or disc_name) }}</strong>{% if title.id == main_id and fields.content_kind != 'tv' %}<span class="title-badge">Main feature candidate</span>{% endif %}</label>
+<p class="title-meta">{{ title.duration }} · {{ title.size }}</p>
+{% if fields.content_kind == 'tv' %}
+{% set mapping=identity.mappings.get(title.id|string,{}) %}
+<div class="episode-assignment"><strong>{{ "Confirmed by you" if mapping.get('state') == 'user_confirmed' else "Probable — confirm assignment" if mapping.get('confidence') == 'probable' else "Unverified episode suggestion" if mapping else "Unassigned title" }}</strong>
+<details class="episode-editor"><summary>Assignment and order</summary>
+{% if mapping %}<p class="muted">{{ mapping.evidence }}</p>{% endif %}
+<label>Choose an episode candidate<select data-episode-candidate="{{ title.id }}"><option value="">Enter details below or leave unassigned</option>{% for episode in identity.episode_candidates %}<option value="{{ episode.number }}" data-name="{{ episode.name }}" {% if mapping.get('number') == episode.number and mapping.get('name') == episode.name %}selected{% endif %}>S{{ '%02d'|format(episode.season) }}E{{ '%02d'|format(episode.number) }} · {{ episode.name }}</option>{% endfor %}</select></label>
+<div class="plan-grid"><label>Episode number<input name="episode_number_{{ title.id }}" type="number" min="1" max="9999" value="{{ fields.get('episode_number_' ~ title.id,mapping.get('number','')) }}"></label>
+<label>Episode name<input name="episode_name_{{ title.id }}" maxlength="300" value="{{ fields.get('episode_name_' ~ title.id,mapping.get('name','')) }}"></label></div>
+<label><input type="checkbox" name="confirm_episode_{{ title.id }}" value="yes" {% if mapping.get('state') == 'user_confirmed' %}checked{% endif %}>I checked this title and confirm this episode assignment</label>
+<label>Processing order<input name="title_order_{{ title.id }}" type="number" min="0" max="9999" value="{{ fields.get('title_order_' ~ title.id,title.id) }}"></label>
+<div class="controls"><button type="button" data-move-title="up">Move up</button><button type="button" data-move-title="down">Move down</button></div>
+</details></div>{% endif %}
+<details><summary>Details</summary><p class="muted">{{ title.scan_video_hint }} · Title {{ title.id }} · {{ title.chapters or "Unknown" }} chapters{% if title.source %} · {{ title.source }}{% endif %}</p><p class="muted">{{ title.segment_count or "Unknown" }} segments</p>
+{% for track in title.track_choices %}<div class="muted">{{ track.label }}</div>{% endfor %}
+</details></div>
+{% endfor %}
+{% endmacro %}
+{% if feature_titles %}<h2>{{ "Disc episodes" if fields.content_kind == "tv" else "Main features and episodes" }}</h2>{{ title_list(feature_titles) }}{% endif %}
+{% if extra_titles %}<details><summary>Extras · {{ extra_titles | length }}</summary>{{ title_list(extra_titles) }}</details>{% endif %}
+{% if fields.content_kind == "tv" %}<button name="action" value="save-mappings" formnovalidate>Save episode choices</button><p class="muted">Saving keeps your choices. Confirm assignments after checking which episode each title contains.</p>{% endif %}
+<div class="wizard-actions"><button name="action" value="back" formnovalidate>← Back</button><button name="action" value="next" id="titles-next" class="button-primary" {% if not fields.title_ids %}disabled{% endif %}>Next: Prepare Output →</button></div>
+{% elif step == 3 and disc.kind == "audio" %}
+<h1 class="wizard-title">Prepare your album</h1><p class="muted">Magic Media PAL saves music as lossless FLAC. Confirm the album details and the songs you selected.</p>
+<div class="plan-grid">
+<label>Album<input name="album" value="{{ fields.album }}" required></label>
+<label>Album artist<input name="artist" value="{{ fields.artist }}" required></label>
+<label>Release year<input name="album_year" value="{{ fields.album_year }}" inputmode="numeric" maxlength="4" placeholder="Optional"></label>
+<label>Destination<select name="audio_destination"><option value="staging" {% if fields.audio_destination == "staging" %}selected{% endif %}>Save locally for review</option>{% if music_library_available %}<option value="music" {% if fields.audio_destination == "music" %}selected{% endif %}>Configured music library</option>{% endif %}</select></label>
+</div>
+<fieldset><legend>Track titles</legend>{% for track in audio_tracks if track.number|string in fields.tracks %}<label>{{ track.number }}. Track title<input name="track_name_{{ track.number }}" value="{{ fields.get('track_name_' ~ track.number,track.title) }}" required></label>{% endfor %}</fieldset>
+<p class="wizard-notice">Lossless FLAC preserves the CD audio. Music uses the configured music folder; a Jellyfin connection alone does not share storage.</p>
+<div class="wizard-actions"><button name="action" value="back" formnovalidate>← Back</button><button name="action" value="next" class="button-primary">Next: Review →</button></div>
+{% elif step == 3 %}
+<h1 class="wizard-title">{{ "Prepare your episodes" if fields.content_kind == "tv" else "Prepare your movie" }}</h1><p class="muted">Choose the picture, sound and destination. Magic Media PAL checks your plan before reading the disc.</p>
+{% if fields.content_kind == 'tv' %}
+<fieldset><legend>Episode assignments</legend>
+<p>Saving episode names keeps them as suggestions. Confirm only after checking which episode each selected title contains.</p>
+<ul>{% for title in selected_titles %}{% set mapping=identity.mappings.get(title.id|string,{}) %}
+<li><strong>{{ fields.get('episode_name_' ~ title.id,mapping.get('name','Unassigned episode')) or 'Unassigned episode' }}</strong>
+ · Title {{ title.id }} · {{ title.duration }}
+ · {{ "Confirmed by you" if mapping.get('state') == 'user_confirmed' else "Not confirmed" }}</li>{% endfor %}</ul>
+<div class="controls"><button name="action" value="confirm-mappings" class="button-primary" formnovalidate>Confirm these episode assignments</button>
+<button name="action" value="step:2" formnovalidate>Review or change assignments</button></div>
+</fieldset>
+{% endif %}
+<input type="hidden" name="plan_present" value="yes">
+<div class="plan-grid">
+<label>Playback format<select name="workflow_container" id="container">
+<option value="mp4" {% if fields.workflow_container == "mp4" %}selected{% endif %}>MP4 · tested with Jellyfin and Fire TV</option>
+<option value="mkv" {% if fields.workflow_container == "mkv" %}selected{% endif %}>MKV · selected original sound and subtitles</option>
+<option value="preserve" {% if fields.workflow_container == "preserve" %}selected{% endif %}>MKV · every original track (advanced)</option>
+</select></label>
+<label>Audio language<select name="workflow_language" id="audio-language">{% for code,label in audio_languages %}<option value="{{ code }}" {% if fields.workflow_language == code %}selected{% endif %}>{{ label }}</option>{% endfor %}</select></label>
+<label class="full"><input type="checkbox" name="workflow_surround" value="yes" {% if fields.workflow_surround == "yes" %}checked{% endif %}> Require surround sound (5.1 or better)</label>
+<label>Subtitles<select name="workflow_subtitles" id="subtitles"><option value="no" {% if fields.workflow_subtitles != "yes" %}selected{% endif %}>No</option><option value="yes" {% if fields.workflow_subtitles == "yes" %}selected{% endif %}>Yes · keep a selected track</option></select></label>
+<label data-subtitles>Subtitle language<select name="workflow_subtitle_language">{% for code,label in subtitle_languages %}<option value="{{ code }}" {% if fields.workflow_subtitle_language == code %}selected{% endif %}>{{ label }}</option>{% endfor %}</select></label>
+<label>Picture quality<select name="workflow_quality"><option value="balanced" {% if fields.workflow_quality == "balanced" %}selected{% endif %}>High quality · smaller file</option><option value="original" {% if fields.workflow_quality == "original" %}selected{% endif %}>Keep original video</option><option value="compact" {% if fields.workflow_quality == "compact" %}selected{% endif %}>Compact · favor saving space</option></select></label>
+<label>Destination<select name="workflow_destination"><option value="staging" {% if fields.workflow_destination == "staging" %}selected{% endif %}>Save locally for review</option>{% if import_available %}<option value="jellyfin" {% if fields.workflow_destination == "jellyfin" %}selected{% endif %}>Add to {{ "Jellyfin TV" if fields.content_kind == "tv" else "Jellyfin Movies" }}</option>{% endif %}</select></label>
+</div>
+{% for title in selected_titles %}
+<fieldset><legend>{{ title.name or disc_name }}{% if selected_titles|length > 1 %} · {{ title.duration }}{% endif %}</legend>
+<div class="plan-grid">
+<label>{{ "Copy title" if fields.content_kind == "tv" else "Movie title" }}<input name="movie_name_{{ title.id }}" value="{{ fields.get('movie_name_' ~ title.id, fields.workflow_title if selected_titles|length == 1 else (title.name or disc_name) ~ ' - ' ~ loop.index) }}" required></label>
+<label>Release year<input name="movie_year_{{ title.id }}" inputmode="numeric" maxlength="4" value="{{ fields.get('movie_year_' ~ title.id, fields.workflow_year) }}" placeholder="Optional"></label>
+<label class="full">Sound track<select name="scan_audio_{{ title.id }}" class="audio-choice">
+<option value="">Use my language and surround preferences</option>
+{% for track in title.track_choices if track.kind == "audio" %}<option value="{{ track.id }}" data-language="{{ track.selector.language }}" data-codec="{{ track.selector.codec }}" data-channels="{{ track.selector.channels }}" data-default="{{ track.disposition.get('default', 0) }}" data-commentary="{{ 1 if ('commentary' in track.title | lower or 'description' in track.title | lower or 'visually impaired' in track.title | lower or track.disposition.get('comment') or track.disposition.get('visual_impaired')) else 0 }}" {% if fields.get('scan_audio_' ~ title.id) == track.id %}selected{% endif %}>{{ track.label }}</option>{% endfor %}
+</select><span class="muted sound-guidance"></span></label>
+<label class="full" data-subtitles>Subtitle track<select name="scan_subtitle_{{ title.id }}"><option value="">Use my subtitle language preference</option>{% for track in title.track_choices if track.kind == "subtitle" %}<option value="{{ track.id }}" {% if fields.get('scan_subtitle_' ~ title.id) == track.id %}selected{% endif %}>{{ track.label }}</option>{% endfor %}</select></label>
+</div></fieldset>
+{% endfor %}
+<p class="muted">MP4 uses a selected Dolby Digital sound track. Choose MKV to keep other sound formats or subtitles. Selected surround sound is copied without downmixing.</p>
+<details><summary>Advanced encoding controls</summary><div class="plan-grid">
+<label>Encoding device<select name="workflow_engine">{% for key,label in (("auto","Automatic · try NVIDIA, then CPU"),("gpu","NVIDIA"),("cpu","CPU / HandBrake")) %}<option value="{{ key }}" {% if fields.workflow_engine == key %}selected{% endif %}>{{ label }}</option>{% endfor %}</select></label>
+<label>Video format<select name="workflow_codec"><option value="h265" {% if fields.workflow_codec == "h265" %}selected{% endif %}>HEVC</option><option value="h264" {% if fields.workflow_codec == "h264" %}selected{% endif %}>H.264</option></select></label>
+</div></details>
+<div class="wizard-actions"><button name="action" value="back" formnovalidate>← Back</button><button name="action" value="next" class="button-primary">Next: Review →</button></div>
+{% else %}
+<h1 class="wizard-title">Review and start</h1><p class="muted">Confirm what Magic Media PAL will prepare. Test Plan checks the current conditions before reading your disc.</p>
+{% for entry in summaries %}
+<h2>{{ entry.name }}</h2>
+{% if disc.kind == "audio" %}<dl class="wizard-summary"><dt>Album artist</dt><dd>{{ entry.artist }}</dd><dt>Tracks</dt><dd>{{ entry.tracks }}</dd><dt>Audio</dt><dd>Lossless FLAC · original CD sound</dd><dt>Release year</dt><dd>{{ entry.year or "Not specified" }}</dd><dt>Destination</dt><dd>{{ entry.destination }}</dd></dl>
+{% else %}
+<dl class="wizard-summary"><dt>Duration</dt><dd>{{ entry.duration }}</dd><dt>Picture</dt><dd>{{ entry.picture }}</dd><dt>Sound</dt><dd>{{ entry.sound }}</dd><dt>Subtitles</dt><dd>{{ entry.subtitles }}</dd><dt>Playback format</dt><dd>{{ entry.container }}</dd><dt>Destination</dt><dd>{{ entry.destination }}</dd><dt>Encoding device</dt><dd>{{ entry.engine }}</dd></dl>
+{% endif %}
+{% endfor %}
+{% if checks %}
+<h2>Test Plan</h2><ul class="plan-checks">
+{% for check in checks %}<li class="plan-check"><span class="check-icon check-{{ check.status }}" aria-label="{{ check.status }}">{{ "✓" if check.status == "passed" else "!" if check.status == "blocked" else "◷" }}</span><div><strong>{{ check.name }}</strong><div class="muted">{{ check.message }}</div>{% if check.status == "blocked" %}<button name="action" value="step:{{ check.step }}" formnovalidate>Fix in {{ "Select Titles" if check.step == 2 else "Prepare Output" if check.step == 3 else "Scan Disc" }}</button>{% endif %}</div></li>{% endfor %}
+</ul>
+<div class="wizard-notice" role="status">{{ "Please resolve the blocked checks before starting." if blocked else "Ready to start. Pending checks will run after extraction." }}</div>
+{% else %}<p class="wizard-notice">Test Plan has not run yet. Start Workflow always runs the required checks before accepting your job.</p>{% endif %}
+<div class="wizard-actions"><button name="action" value="back" formnovalidate>← Back</button><div class="action-group"><button name="action" value="test">{{ "Run Test Plan Again" if checks else "Test Plan" }}</button><button name="action" value="start" class="button-primary" {% if blocked or running or draft.submitted %}disabled{% endif %}>Start Workflow →</button></div></div>
+{% endif %}
+</section></form>
+{% endif %}
+</main></div>
+<footer class="app-footer"><a href="/credits">Credits &amp; acknowledgments</a></footer>
+<script>
+
+function selectDiscTitles(selected) {
+ document.querySelectorAll('input[name="title_ids"]').forEach(input=>{input.checked=selected;input.dispatchEvent(new Event('change',{bubbles:true}));});
+}
+document.querySelectorAll('[data-episode-candidate]').forEach(select=>select.addEventListener('change',()=>{
+ const id=select.dataset.episodeCandidate, option=select.selectedOptions[0];
+ document.querySelector('[name="episode_number_'+id+'"]').value=option.value;
+ document.querySelector('[name="episode_name_'+id+'"]').value=option.dataset.name||'';
+ document.querySelector('[name="confirm_episode_'+id+'"]').checked=false;
+}));
+document.querySelectorAll('input[name^="episode_number_"],input[name^="episode_name_"]').forEach(input=>input.addEventListener('input',()=>{
+ const id=input.name.split('_').pop(), confirmation=document.querySelector('[name="confirm_episode_'+id+'"]');if(confirmation)confirmation.checked=false;
+}));
+document.querySelectorAll('[name="series_name"],[name="identity_season"],[name="metadata_order"]').forEach(input=>input.addEventListener('change',()=>{
+ document.querySelectorAll('input[name^="confirm_episode_"]').forEach(check=>check.checked=false);
+}));
+document.querySelectorAll('[data-move-title]').forEach(button=>button.addEventListener('click',()=>{
+ const row=button.closest('.title-choice'), sibling=button.dataset.moveTitle==='up'?row.previousElementSibling:row.nextElementSibling;
+ if(!sibling||!sibling.classList.contains('title-choice'))return;
+ if(button.dataset.moveTitle==='up')row.parentNode.insertBefore(row,sibling);else row.parentNode.insertBefore(sibling,row);
+ document.querySelectorAll('.title-choice').forEach((item,index)=>{const input=item.querySelector('input[name^="title_order_"]');if(input)input.value=index;});
+}));
+
+const form=document.getElementById('wizard-form');
+if(form) {
+ const boxes=[...form.querySelectorAll('input[name="title_ids"],input[name="tracks"]')];
+ const next=document.getElementById('titles-next');
+ if(next) boxes.forEach(box=>box.addEventListener('change',()=>{next.disabled=!boxes.some(item=>item.checked);}));
+ const selectAll=document.getElementById('select-all-tracks');
+ const clearTracks=document.getElementById('clear-tracks');
+ if(selectAll) selectAll.addEventListener('click',()=>{boxes.forEach(box=>box.checked=true);if(next)next.disabled=!boxes.length;});
+ if(clearTracks) clearTracks.addEventListener('click',()=>{boxes.forEach(box=>box.checked=false);if(next)next.disabled=true;});
+ const subtitles=document.getElementById('subtitles');
+ const language=document.getElementById('audio-language');
+ const container=document.getElementById('container');
+ const surround=form.querySelector('input[name="workflow_surround"]');
+ function updateChoices() {
+  form.querySelectorAll('[data-subtitles]').forEach(item=>item.hidden=subtitles && subtitles.value!=='yes');
+  form.querySelectorAll('.audio-choice').forEach(select=>{
+   const eligible=[];
+   [...select.options].slice(1).forEach(option=>{
+    const matches=(!language || option.dataset.language===language.value) &&
+      (!container || container.value!=='mp4' || option.dataset.codec==='ac3') &&
+      (!surround || !surround.checked || Number(option.dataset.channels)>=6);
+    option.hidden=!matches;
+    if(matches && option.dataset.commentary!=='1') eligible.push(option);
+   });
+   eligible.sort((left,right)=>{
+    const leftCodec=left.dataset.codec==='ac3' ? 0 : 1;
+    const rightCodec=right.dataset.codec==='ac3' ? 0 : 1;
+    if(leftCodec!==rightCodec) return leftCodec-rightCodec;
+    const defaults=Number(right.dataset.default)-Number(left.dataset.default);
+    if(defaults) return defaults;
+    const channels=Math.abs(Number(left.dataset.channels)-6)-Math.abs(Number(right.dataset.channels)-6);
+    return channels || left.index-right.index;
+   });
+   const selected=select.selectedOptions[0];
+   const guidance=select.parentElement.querySelector('.sound-guidance');
+   guidance.textContent=selected && selected.hidden ? 'This track differs from your preferences. Review it before continuing.' :
+      !select.value && eligible.length ? 'Automatic choice: '+eligible[0].textContent :
+      !select.value ? 'No matching track is listed. Test Plan will explain your options.' : '';
+  });
+ }
+ form.querySelectorAll('.audio-choice').forEach(input=>input.addEventListener('change',updateChoices));
+ [subtitles,language,container,surround].filter(Boolean).forEach(input=>input.addEventListener('change',updateChoices));
+ updateChoices();
+ form.addEventListener('submit',event=>{
+  if(event.submitter && event.submitter.value==='start') {
+   setTimeout(()=>{event.submitter.disabled=true;event.submitter.textContent='Checking and submitting…';},0);
+  }
+ });
+}
+</script></body></html>

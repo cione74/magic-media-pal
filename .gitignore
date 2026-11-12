@@ -1,0 +1,36 @@
+# Dexter Ripper runtime configuration / secrets
+config/*
+
+# Keep directory present in fresh clones
+!config/.gitkeep
+
+# Rip staging / recovery output
+staging/
+output/
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Local backup files
+*.bak
+*.bak-*
+*.bad.*
+*.pre-*
+*~
+
+# Logs / state
+*.log
+*dexter-ripper-state*.json
+*.partial
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.bak.*
+reports/
+*.tar.gz
+
+library/

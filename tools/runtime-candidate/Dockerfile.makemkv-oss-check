@@ -1,0 +1,10 @@
+FROM debian@sha256:a72b4433de1cf7d6bae0c4cee74d0547f58601a643b3375f070c51600d63b6b2 AS build
+RUN apt-get update && apt-get install -y --no-install-recommends build-essential pkg-config libssl-dev libexpat1-dev libavcodec-dev zlib1g-dev
+WORKDIR /build
+COPY makemkv-oss.tar.gz /build/
+RUN tar -xzf makemkv-oss.tar.gz && cd makemkv-oss-2.0.0 \
+    && ./configure --disable-gui --prefix=/opt/makemkv \
+    && make -j2 && make install DESTDIR=/out \
+    && install -D -m 644 License.txt /out/opt/makemkv/share/MakeMKV/OSS-License.txt
+FROM scratch AS export
+COPY --from=build /out/opt/makemkv/ /

@@ -1,0 +1,10 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Credits · Magic Media PAL</title><link rel="stylesheet" href="/assets/dexter.css"></head>
+<body class="wizard-page"><main style="max-width:1000px;margin:24px auto;padding:16px"><section class="card"><h1>Credits &amp; acknowledgments</h1><p>Magic Media PAL brings these projects together. Thank you to the people who build and maintain them.</p><a class="button" href="/">Back to Magic Media PAL</a></section>
+{% for heading, entries in sections %}<section class="card"><h2>{{ heading }}</h2><dl>{% for name, link, role in entries %}<dt style="margin-top:1rem"><strong><a href="{{ link }}" target="_blank" rel="noopener noreferrer">{{ name }}</a></strong></dt><dd style="margin:0.35rem 0 1rem">{{ role }}</dd>{% endfor %}</dl></section>{% endfor %}
+<section class="card"><h2>Data licenses and notices</h2>
+<p>TVmaze series/episode metadata is licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a>. Magic Media PAL selects and normalizes text; per-result source/license links are retained. Adapted metadata retains the same license. Artwork is not redistributed with Magic Media PAL.</p>
+<p>TheDiscDb data copyright © 2021 Luke Foust, under the <a href="https://github.com/TheDiscDb/data/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">MIT license</a>. The full notice is retained in ACKNOWLEDGMENTS.md. Its web software is not incorporated.</p>
+<p>libdvdread is GPL-2.0-or-later. Other bundled tools and libraries retain their own licenses. Credits are not a replacement for their license texts or corresponding-source obligations.</p>
+<p>This lists integrated applications, major runtime/build components and services. Transitive codec/system packages also carry their own notices; a complete version-specific image inventory remains part of release compliance review. Optional services are not required for every operation. No endorsement is implied.</p>
+<a class="button" href="/">Back to Magic Media PAL</a></section></main></body></html>

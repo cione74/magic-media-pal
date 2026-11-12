@@ -1,0 +1,14 @@
+.git
+config
+staging
+output
+library
+reports
+__pycache__
+*.pyc
+*.log
+
+# Installer imports must not leak host-Python bytecode into the runtime.
+**/__pycache__
+**/*.pyc
+**/*.pyo
